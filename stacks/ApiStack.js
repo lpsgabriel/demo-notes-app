@@ -9,10 +9,11 @@ export function ApiStack({ stack, app }) {
     defaults: {
       authorizer: "iam",
       function: {
-        permissions: [table],
-        environment: {
-          TABLE_NAME: table.tableName,
-        },
+        // permissions: [table],
+        // environment: {
+        //   TABLE_NAME: table.tableName,
+        // },
+        bind: [table],
       },
     },
     routes: {
