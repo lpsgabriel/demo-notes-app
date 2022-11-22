@@ -1,6 +1,8 @@
 import { Bucket, Table } from "@serverless-stack/resources"
 
 export function StorageStack({ stack, app }) {
+  //Create an S3 bucket
+  const bucket = new Bucket(stack, "Uploads")
   //Create DynamoDB table
   const table = new Table(stack, "Notes", {
     fields: {
@@ -9,8 +11,6 @@ export function StorageStack({ stack, app }) {
     },
     primaryIndex: { partitionKey: "userId", sortKey: "noteId" },
   })
-
-  const bucket = new Bucket(stack, "Uploads")
 
   return {
     table,
